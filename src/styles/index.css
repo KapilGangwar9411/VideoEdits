@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=K2D:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-inter overflow-y-auto overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-space-grotesk;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon to-blue-500;
+  }
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  position: relative;
+}
+
+.scroll-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+.doodle-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='rgba(0,0,0,0.07)' stroke-width='1' d='M20,100 Q40,60 60,100 T100,100 M20,60 Q40,20 60,60 T100,60 M20,20 Q40,60 60,20 T100,20' /%3E%3Cpath fill='none' stroke='rgba(0,0,0,0.07)' stroke-width='1' d='M100,20 Q60,40 100,60 T100,100 M60,20 Q20,40 60,60 T60,100 M20,20 Q60,40 20,60 T20,100' /%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  pointer-events: none;
+  opacity: 0.4;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0));
+}
+
+.doodle-stars {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='none' stroke='rgba(0,0,0,0.05)' stroke-width='1' d='M40,20 L40,60 M20,40 L60,40 M25,25 L55,55 M55,25 L25,55' /%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  opacity: 0.6;
+  animation: floatStars 40s linear infinite;
+}
+
+.doodle-circles {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='rgba(0,0,0,0.04)' stroke-width='1' stroke-dasharray='6 6' /%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  opacity: 0.7;
+  animation: floatCircles 50s linear infinite;
+}
+
+@keyframes floatStars {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-80px) rotate(360deg);
+  }
+}
+
+@keyframes floatCircles {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-100px) rotate(-360deg);
+  }
+}
