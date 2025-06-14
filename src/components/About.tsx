@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { Award, Code, Film, Palette, ExternalLink } from 'lucide-react';
 

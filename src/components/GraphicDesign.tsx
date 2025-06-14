@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import { useState, memo } from 'react';
 import { motion, LazyMotion, domAnimation, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 

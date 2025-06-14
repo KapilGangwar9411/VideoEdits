@@ -1,6 +1,6 @@
 import React, { useState, memo } from 'react';
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, ExternalLink, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 
 const ContactInfoCard = memo(({ icon: Icon, title, value, link }: any) => (
   <motion.a

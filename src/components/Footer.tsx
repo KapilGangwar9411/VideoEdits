@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { Instagram, Twitter, Youtube, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 

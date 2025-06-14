@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
@@ -11,6 +10,7 @@ import GraphicDesign from './components/GraphicDesign';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { lazy, Suspense } from 'react';
 
 const MainContent = () => {
   return (
