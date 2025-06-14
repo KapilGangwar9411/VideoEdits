@@ -8,7 +8,7 @@ const SkillCard = memo(({ skill, index }: { skill: any; index: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="group relative bg-white/40 backdrop-blur-md rounded-2xl p-8 
+    className="group relative w-[280px] flex-shrink-0 snap-center bg-white/40 backdrop-blur-md rounded-2xl p-8 
               shadow-lg hover:shadow-xl transition-all duration-300
               hover:bg-white/60 border border-white/20"
   >
@@ -28,7 +28,7 @@ const ExperienceCard = memo(({ experience, index }: { experience: any; index: nu
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-    className="group relative bg-white/40 backdrop-blur-md rounded-2xl p-8 
+    className="group relative w-[400px] flex-shrink-0 snap-center bg-white/40 backdrop-blur-md rounded-2xl p-8 
               hover:bg-white/60 transition-all duration-300
               border border-white/20 shadow-lg hover:shadow-xl"
   >
@@ -113,25 +113,56 @@ const About = () => {
             </p>
           </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-            {skills.map((skill, index) => (
-              <SkillCard key={skill.title} skill={skill} index={index} />
-            ))}
+          {/* Skills Grid - Horizontal Scroll */}
+          <div className="relative px-4 mb-24">
+            {/* Scroll Shadow Indicators */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#fff8de] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#fff8de] to-transparent z-10 pointer-events-none" />
+
+            {/* Scrollable Content */}
+            <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                 style={{
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none',
+                   WebkitOverflowScrolling: 'touch',
+                   scrollSnapType: 'x mandatory'
+                 }}>
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              {skills.map((skill, index) => (
+                <SkillCard key={skill.title} skill={skill} index={index} />
+              ))}
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+            </div>
           </div>
 
-          {/* Experience Section */}
+          {/* Experience Section - Horizontal Scroll */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
+            className="relative px-4"
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Work Experience</h3>
-            {experiences.map((experience, index) => (
-              <ExperienceCard key={experience.title} experience={experience} index={index} />
-            ))}
+            
+            {/* Scroll Shadow Indicators */}
+            <div className="absolute left-0 top-12 bottom-0 w-20 bg-gradient-to-r from-[#fff8de] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-12 bottom-0 w-20 bg-gradient-to-l from-[#fff8de] to-transparent z-10 pointer-events-none" />
+
+            {/* Scrollable Content */}
+            <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                 style={{
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none',
+                   WebkitOverflowScrolling: 'touch',
+                   scrollSnapType: 'x mandatory'
+                 }}>
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              {experiences.map((experience, index) => (
+                <ExperienceCard key={experience.title} experience={experience} index={index} />
+              ))}
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+            </div>
           </motion.div>
         </div>
       </section>
