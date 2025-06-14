@@ -58,10 +58,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold font-k2d mb-6 text-gray-900"
+          className="text-5xl md:text-6xl lg:text-7xl font-bold font-k2d mb-6 text-gray-900"
         >
           Crafting Visual{' '}
-          <span className="text-[#2E8B57] text-5xl md:text-7xl lg:text-9xl">magic</span>
+          <span className="text-[#2E8B57] text-7xl md:text-7xl lg:text-9xl block mt-2 md:inline md:mt-0">magic</span>
         </motion.h1>
 
         <motion.p

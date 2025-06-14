@@ -68,13 +68,6 @@ const CGIAdvertisements = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-8 sm:mb-12"
           >
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: '100px' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[2px] bg-[#FF5733] mx-auto mb-6 sm:mb-8"
-            />
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-k2d mb-4 sm:mb-6 text-white tracking-tight">
               CGI <span className="text-[#FF5733]">Advertisements</span>
             </h2>
@@ -90,14 +83,14 @@ const CGIAdvertisements = () => {
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
             {/* Scrollable Content */}
-            <div className="flex gap-3 sm:gap-3 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
+            <div className="flex gap-3 sm:gap-3 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide items-center justify-start sm:justify-start"
                  style={{
                    scrollbarWidth: 'none',
                    msOverflowStyle: 'none',
                    WebkitOverflowScrolling: 'touch',
                    scrollSnapType: 'x mandatory'
                  }}>
-              <div className="flex-shrink-0 w-0 sm:w-[calc((100%-1440px)/2)]" />
+              <div className="flex-shrink-0 w-[24px] sm:w-[calc((100%-1440px)/2)]" />
               {projects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -109,7 +102,7 @@ const CGIAdvertisements = () => {
                     delay: index * 0.1,
                     ease: [0.43, 0.13, 0.23, 0.96]
                   }}
-                  className="group relative w-[calc(100vw-48px)] sm:w-[240px] flex-shrink-0 snap-center first:ml-2 sm:first:ml-0"
+                  className="group relative w-[calc(100vw-48px)] sm:w-[240px] flex-shrink-0 snap-center"
                 >
                   <div className="aspect-[9/16] rounded-xl overflow-hidden bg-black/20 h-[70vh] sm:h-[380px] 
                                shadow-lg shadow-black/20 backdrop-blur-sm
@@ -135,7 +128,7 @@ const CGIAdvertisements = () => {
                   </div>
                 </motion.div>
               ))}
-              <div className="flex-shrink-0 w-0 sm:w-[calc((100%-1440px)/2)]" />
+              <div className="flex-shrink-0 w-[24px] sm:w-[calc((100%-1440px)/2)]" />
             </div>
           </div>
         </div>
