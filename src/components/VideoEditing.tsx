@@ -106,7 +106,7 @@ const VideoEditing = () => {
       title: 'Motion Design',
       client: 'College Society',
       tools: ['Premiere Pro', 'After Effects'],
-      videoUrl: '/videos/videowalk.mp4',
+      videoUrl: '/videos/aarambh.mp4',
     },
   ];
 

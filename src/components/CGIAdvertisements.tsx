@@ -58,46 +58,46 @@ const CGIAdvertisements = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#141414] to-[#0a0a0a] opacity-50" />
       
       {/* Main content */}
-      <div className="relative pt-32 pb-20">
-        <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative pt-16 pb-16">
+        <div className="max-w-[1920px] mx-auto px-2 sm:px-6 lg:px-8">
           {/* Section header with animated line */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-24 relative"
+            className="text-center mb-8 sm:mb-12"
           >
             <motion.div
               initial={{ width: 0 }}
               whileInView={{ width: '100px' }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-[2px] bg-[#FF5733] mx-auto mb-8"
+              className="h-[2px] bg-[#FF5733] mx-auto mb-6 sm:mb-8"
             />
-            <h2 className="text-5xl font-bold font-bricolage mb-6 text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-k2d mb-4 sm:mb-6 text-white tracking-tight">
               CGI <span className="text-[#FF5733]">Advertisements</span>
             </h2>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
               Bringing products to life through stunning 3D visualization and creative storytelling
             </p>
           </motion.div>
 
           {/* Videos showcase with horizontal scroll */}
-          <div className="relative px-4">
+          <div className="relative -mt-4">
             {/* Scroll Shadow Indicators */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
             {/* Scrollable Content */}
-            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+            <div className="flex gap-3 sm:gap-3 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
                  style={{
                    scrollbarWidth: 'none',
                    msOverflowStyle: 'none',
                    WebkitOverflowScrolling: 'touch',
                    scrollSnapType: 'x mandatory'
                  }}>
-              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              <div className="flex-shrink-0 w-0 sm:w-[calc((100%-1440px)/2)]" />
               {projects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -109,9 +109,9 @@ const CGIAdvertisements = () => {
                     delay: index * 0.1,
                     ease: [0.43, 0.13, 0.23, 0.96]
                   }}
-                  className="group relative w-[220px] flex-shrink-0 snap-center"
+                  className="group relative w-[calc(100vw-48px)] sm:w-[240px] flex-shrink-0 snap-center first:ml-2 sm:first:ml-0"
                 >
-                  <div className="aspect-[9/16] rounded-xl overflow-hidden bg-black/20 h-[360px] 
+                  <div className="aspect-[9/16] rounded-xl overflow-hidden bg-black/20 h-[70vh] sm:h-[380px] 
                                shadow-lg shadow-black/20 backdrop-blur-sm
                                transform transition-all duration-300 group-hover:scale-[1.02]">
                     <ReactPlayer
@@ -122,7 +122,7 @@ const CGIAdvertisements = () => {
                       loop={true}
                       muted={true}
                       playsinline
-                      className="object-contain"
+                      className="object-cover"
                     />
                     {/* Video overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
@@ -135,7 +135,7 @@ const CGIAdvertisements = () => {
                   </div>
                 </motion.div>
               ))}
-              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              <div className="flex-shrink-0 w-0 sm:w-[calc((100%-1440px)/2)]" />
             </div>
           </div>
         </div>
