@@ -31,12 +31,12 @@ A modern, responsive portfolio website built with React and Tailwind CSS, featur
 
 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/portfolio-website.git
+git clone git@github.com:KAPIL9411/VideoEdits.git
 ```
 
 2. Install dependencies
 ```bash
-cd portfolio-website
+cd VideoEdits
 npm install
 # or
 yarn install
@@ -71,6 +71,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Kapil Kurmi - kurmikapil154@gmail.com
+Kapil Gangwar - kurmikapil154@gmail.com
 
-Project Link: [https://github.com/yourusername/portfolio-website](https://github.com/yourusername/portfolio-website)
+Project Link: [https://github.com/KAPIL9411/VideoEdits](https://github.com/KAPIL9411/VideoEdits)
