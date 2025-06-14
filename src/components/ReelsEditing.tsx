@@ -129,4 +129,4 @@ const ReelsEditing = () => {
   );
 };
 
-export default ReelsEditing;
+export default memo(ReelsEditing);

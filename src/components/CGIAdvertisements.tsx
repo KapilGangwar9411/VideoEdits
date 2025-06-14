@@ -121,4 +121,4 @@ const CGIAdvertisements = () => {
   );
 };
 
-export default CGIAdvertisements;
+export default memo(CGIAdvertisements);

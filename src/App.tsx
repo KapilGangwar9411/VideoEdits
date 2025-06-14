@@ -10,7 +10,6 @@ import GraphicDesign from './components/GraphicDesign';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { lazy, Suspense } from 'react';
 
 const MainContent = () => {
   return (

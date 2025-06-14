@@ -9,55 +9,10 @@ interface Design {
   imageUrl: string;
 }
 
-interface DesignCardProps {
-  design: Design;
-  index: number;
-}
-
 interface DesignModalProps {
   design: Design | null;
   onClose: () => void;
 }
-
-const DesignCard = memo(({ design, index }: DesignCardProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ 
-        duration: 0.4,
-        delay: Math.min(index * 0.1, 0.3)
-      }}
-      className="group relative"
-      layout
-    >
-      <div className="aspect-square rounded-2xl overflow-hidden bg-black/5 shadow-lg">
-        <div className="relative h-full transform transition-transform duration-500 group-hover:scale-105">
-          <img
-            src={design.imageUrl}
-            alt={design.title}
-            className="w-full h-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
-                        opacity-0 group-hover:opacity-100 transition-all duration-300">
-            <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 
-                          group-hover:translate-y-0 transition-transform duration-300">
-              <h3 className="text-xl font-bold text-white mb-2">{design.title}</h3>
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm 
-                           text-white/90 text-sm font-medium">
-                {design.category}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-});
 
 const CategoryButton = memo(({ 
   category, 
