@@ -34,6 +34,12 @@ const CGIAdvertisements = () => {
       description: 'Creative motion graphics',
       videoUrl: '/videos/beyondwater.mp4',
     },
+    {
+      id: 6,
+      title: 'Motion Design',
+      description: 'Creative motion graphics',
+      videoUrl: '/videos/beyondwater.mp4',
+    },
   ];
 
   return (
@@ -77,43 +83,60 @@ const CGIAdvertisements = () => {
             </p>
           </motion.div>
 
-          {/* Videos showcase */}
-          <div className="flex justify-center items-start gap-6 relative">
-            {/* Gradient overlays for scroll fade effect */}
-            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10" />
-            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10" />
+          {/* Videos showcase with horizontal scroll */}
+          <div className="relative px-4">
+            {/* Scroll Shadow Indicators */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.1,
-                  ease: [0.43, 0.13, 0.23, 0.96]
-                }}
-                className="group relative w-full max-w-[220px]"
-              >
-                <div className="aspect-[9/16] rounded-xl overflow-hidden bg-black/20 h-[360px] 
-                             shadow-lg shadow-black/20 backdrop-blur-sm
-                             transform transition-all duration-300 group-hover:scale-[1.02]">
-                  <ReactPlayer
-                    url={project.videoUrl}
-                    width="100%"
-                    height="100%"
-                    playing={true}
-                    loop={true}
-                    muted={true}
-                    playsinline
-                    className="object-contain"
-                  />
-                  {/* Video overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </motion.div>
-            ))}
+            {/* Scrollable Content */}
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                 style={{
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none',
+                   WebkitOverflowScrolling: 'touch',
+                   scrollSnapType: 'x mandatory'
+                 }}>
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: index * 0.1,
+                    ease: [0.43, 0.13, 0.23, 0.96]
+                  }}
+                  className="group relative w-[220px] flex-shrink-0 snap-center"
+                >
+                  <div className="aspect-[9/16] rounded-xl overflow-hidden bg-black/20 h-[360px] 
+                               shadow-lg shadow-black/20 backdrop-blur-sm
+                               transform transition-all duration-300 group-hover:scale-[1.02]">
+                    <ReactPlayer
+                      url={project.videoUrl}
+                      width="100%"
+                      height="100%"
+                      playing={true}
+                      loop={true}
+                      muted={true}
+                      playsinline
+                      className="object-contain"
+                    />
+                    {/* Video overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
+                        <p className="text-sm text-white/80">{project.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+            </div>
           </div>
         </div>
       </div>

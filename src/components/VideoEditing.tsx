@@ -30,12 +30,12 @@ const VideoCard = memo(({ video, index }: VideoCardProps) => {
         duration: 0.5,
         delay: index * 0.1
       }}
-      className="relative group w-full max-w-[600px]"
+      className="relative group w-[400px] flex-shrink-0 snap-center"
       onViewportEnter={() => setIsVisible(true)}
       onViewportLeave={() => setIsVisible(false)}
     >
       <div className="aspect-video rounded-2xl overflow-hidden bg-black/20 shadow-2xl
-                     transform transition-all duration-300 group-hover:shadow-[0_0_40px_rgba(0,255,148,0.1)]">
+                   transform transition-all duration-300 group-hover:shadow-[0_0_40px_rgba(0,255,148,0.1)]">
         <ReactPlayer
           url={video.videoUrl}
           width="100%"
@@ -101,6 +101,13 @@ const VideoEditing = () => {
       tools: ['Premiere Pro', 'After Effects'],
       videoUrl: '/videos/pp.mp4',
     },
+    {
+      id: 4,
+      title: 'Motion Design',
+      client: 'College Society',
+      tools: ['Premiere Pro', 'After Effects'],
+      videoUrl: '/videos/videowalk.mp4',
+    },
   ];
 
   return (
@@ -143,7 +150,7 @@ const VideoEditing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="flex justify-center"
+                className="flex justify-center mb-12"
               >
                 <Link to="/video-gallery">
                   <motion.button
@@ -165,10 +172,26 @@ const VideoEditing = () => {
             </motion.div>
           </div>
 
-          <div className="flex justify-center items-start gap-6">
-            {videos.map((video, index) => (
-              <VideoCard key={video.id} video={video} index={index} />
-            ))}
+          {/* Videos showcase with horizontal scroll */}
+          <div className="relative px-4">
+            {/* Scroll Shadow Indicators */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+            {/* Scrollable Content */}
+            <div className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                 style={{
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none',
+                   WebkitOverflowScrolling: 'touch',
+                   scrollSnapType: 'x mandatory'
+                 }}>
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+              {videos.map((video, index) => (
+                <VideoCard key={video.id} video={video} index={index} />
+              ))}
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+            </div>
           </div>
         </div>
       </section>

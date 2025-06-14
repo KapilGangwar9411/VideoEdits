@@ -167,16 +167,18 @@ const GraphicDesign = () => {
               Crafting visual experiences that leave a lasting impression
             </p>
 
-            {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <CategoryButton
-                  key={category}
-                  category={category}
-                  isSelected={selectedCategory === category}
-                  onClick={() => setSelectedCategory(category)}
-                />
-              ))}
+            {/* Category Filters - Scrollable on mobile */}
+            <div className="overflow-x-auto pb-4 mb-12 scrollbar-hide">
+              <div className="flex justify-center gap-4 min-w-max px-4">
+                {categories.map((category) => (
+                  <CategoryButton
+                    key={category}
+                    category={category}
+                    isSelected={selectedCategory === category}
+                    onClick={() => setSelectedCategory(category)}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
 

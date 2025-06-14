@@ -34,6 +34,12 @@ const ReelsEditing = () => {
       description: 'Engaging brand narratives',
       videoUrl: '/videos/bbq3.mp4',
     },
+    {
+      id: 6,
+      title: 'Motion Design',
+      description: 'Creative motion graphics',
+      videoUrl: '/videos/beyondwater.mp4',
+    },
   ];
 
   return (
@@ -72,57 +78,72 @@ const ReelsEditing = () => {
           </p>
         </motion.div>
 
-        {/* Reels Display */}
-        <div className="flex justify-center items-start gap-6">
-          {reels.map((reel, index) => (
-            <motion.div
-              key={reel.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.8, 
-                delay: index * 0.1,
-                ease: [0.43, 0.13, 0.23, 0.96]
-              }}
-              className="group relative w-full max-w-[220px]"
-            >
-              <div className="aspect-[9/16] rounded-xl overflow-hidden bg-white shadow-2xl 
-                           transform transition-all duration-300 group-hover:scale-[1.02]
-                           group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-                <ReactPlayer
-                  url={reel.videoUrl}
-                  width="100%"
-                  height="100%"
-                  playing={true}
-                  loop={true}
-                  muted={true}
-                  playsinline
-                  className="object-cover"
-                />
-                
-                {/* Overlay Content */}
-                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent
-                              opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="text-lg font-bold text-white mb-1">
-                    {reel.title}
-                  </h3>
-                  <p className="text-sm text-white/80">
-                    {reel.description}
-                  </p>
-                </div>
+        {/* Reels Display with horizontal scroll */}
+        <div className="relative px-4">
+          {/* Scroll Shadow Indicators */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#fff8de] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#fff8de] to-transparent z-10 pointer-events-none" />
 
-                {/* Play Indicator */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm 
-                                flex items-center justify-center opacity-0 group-hover:opacity-100 
-                                transition-opacity duration-300">
-                    <div className="w-8 h-8 rounded-full bg-white/90" />
+          {/* Scrollable Content */}
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+               style={{
+                 scrollbarWidth: 'none',
+                 msOverflowStyle: 'none',
+                 WebkitOverflowScrolling: 'touch',
+                 scrollSnapType: 'x mandatory'
+               }}>
+            <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+            {reels.map((reel, index) => (
+              <motion.div
+                key={reel.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.1,
+                  ease: [0.43, 0.13, 0.23, 0.96]
+                }}
+                className="group relative w-[220px] flex-shrink-0 snap-center"
+              >
+                <div className="aspect-[9/16] rounded-xl overflow-hidden bg-white shadow-2xl 
+                             transform transition-all duration-300 group-hover:scale-[1.02]
+                             group-hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+                  <ReactPlayer
+                    url={reel.videoUrl}
+                    width="100%"
+                    height="100%"
+                    playing={true}
+                    loop={true}
+                    muted={true}
+                    playsinline
+                    className="object-cover"
+                  />
+                  
+                  {/* Overlay Content */}
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 className="text-lg font-bold text-white mb-1">
+                      {reel.title}
+                    </h3>
+                    <p className="text-sm text-white/80">
+                      {reel.description}
+                    </p>
+                  </div>
+
+                  {/* Play Indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm 
+                                  flex items-center justify-center opacity-0 group-hover:opacity-100 
+                                  transition-opacity duration-300">
+                      <div className="w-8 h-8 rounded-full bg-white/90" />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+            <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
+          </div>
         </div>
       </div>
     </section>

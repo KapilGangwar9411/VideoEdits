@@ -26,7 +26,7 @@ const ShortCard = memo(({ short, index }: ShortCardProps) => {
         duration: 0.4,
         delay: Math.min(index * 0.1, 0.3)
       }}
-      className="relative w-72 flex-shrink-0 group"
+      className="relative w-[220px] flex-shrink-0 snap-center group"
       onViewportEnter={() => setIsVisible(true)}
       onViewportLeave={() => setIsVisible(false)}
       onMouseEnter={() => setIsHovered(true)}
@@ -104,6 +104,11 @@ const ShortsEditing = () => {
       title: 'Behind the Scenes',
       videoUrl: '/videos/nike.mp4',
     },
+    {
+      id: 5,
+      title: 'Motion Design',
+      videoUrl: '/videos/bbq1.mp4',
+    }
   ];
 
   return (
@@ -133,12 +138,25 @@ const ShortsEditing = () => {
             </p>
           </motion.div>
 
-          {/* Shorts Grid */}
-          <div className="relative">
-            <div className="flex space-x-8 justify-center">
+          {/* Shorts Grid with horizontal scroll */}
+          <div className="relative px-4">
+            {/* Scroll Shadow Indicators */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#fff8de] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#fff8de] to-transparent z-10 pointer-events-none" />
+
+            {/* Scrollable Content */}
+            <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                 style={{
+                   scrollbarWidth: 'none',
+                   msOverflowStyle: 'none',
+                   WebkitOverflowScrolling: 'touch',
+                   scrollSnapType: 'x mandatory'
+                 }}>
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
               {shorts.map((short, index) => (
                 <ShortCard key={short.id} short={short} index={index} />
               ))}
+              <div className="flex-shrink-0 w-[calc((100%-1440px)/2)]" />
             </div>
           </div>
         </div>
